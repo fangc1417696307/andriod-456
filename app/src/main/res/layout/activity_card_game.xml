@@ -10,7 +10,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_normal"
+        android:layout_margin="@dimen/game_panel_margin"
         app:cardBackgroundColor="@color/felt_card"
         app:cardCornerRadius="@dimen/corner_large"
         app:cardElevation="0dp">
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="18dp">
+            android:padding="@dimen/game_panel_padding">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -51,9 +51,18 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvPairs"
+                    android:id="@+id/tvMode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/gold"
+                    android:textSize="@dimen/text_label"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGroups"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_tiny"
                     android:textColor="@color/on_felt_secondary"
                     android:textSize="@dimen/text_secondary" />
 
@@ -68,32 +77,37 @@
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <!-- 牌桌：由 CardGameView（自定义 ViewGroup）动态生成 16 张牌 -->
-    <cn.edu.sicnu.cardgame.view.CardGameView
-        android:id="@+id/cardGameView"
+    <!-- 牌桌：由 RecyclerView + CardAdapter 渲染的 24 张牌 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvCards"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="@dimen/spacing_small" />
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/spacing_small"
+        android:paddingTop="@dimen/spacing_small"
+        android:paddingEnd="@dimen/spacing_small"
+        android:paddingBottom="@dimen/spacing_small"
+        android:scrollbars="none" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:baselineAligned="false"
-        android:paddingStart="@dimen/spacing_normal"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/game_controls_padding"
         android:paddingTop="@dimen/spacing_small"
-        android:paddingEnd="@dimen/spacing_normal"
-        android:paddingBottom="@dimen/spacing_normal">
+        android:paddingEnd="@dimen/game_controls_padding"
+        android:paddingBottom="@dimen/game_controls_padding">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRestart"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/game_button_height"
+            android:layout_weight="1"
+            android:gravity="center"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="52dp"
-            android:layout_weight="1"
             android:text="@string/action_restart"
             android:textColor="@color/brand_primary"
             app:backgroundTint="@color/white"
@@ -101,14 +115,14 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnExit"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:gravity="center"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="0dp"
-            android:layout_height="52dp"
+            android:layout_height="@dimen/game_button_height"
             android:layout_marginStart="12dp"
             android:layout_weight="1"
+            android:gravity="center"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             android:text="@string/action_exit"
             android:textColor="@color/white"
             app:cornerRadius="@dimen/corner_card"

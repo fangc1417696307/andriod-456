@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    竖屏下的牌桌参数。横屏的取值放在 values-land/integers.xml 中，
+    系统会按当前屏幕方向自动选择，因此同一份代码可以支持横竖屏不同牌数。
+-->
+<resources>
+    <!-- 牌桌上的牌数：4 列 x 6 行 = 24 张 -->
+    <integer name="game_card_count">24</integer>
+    <!-- 列数 -->
+    <integer name="game_column_count">4</integer>
+    <!-- 每凑够几张牌判定一次（三张牌玩法） -->
+    <integer name="game_match_count">3</integer>
+</resources>

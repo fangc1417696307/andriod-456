@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.recyclerview)
     implementation(libs.material)
 
     // 本地单元测试（JUnit4）

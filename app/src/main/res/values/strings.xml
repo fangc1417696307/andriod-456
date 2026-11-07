@@ -72,9 +72,23 @@
     <!-- 提示信息与格式 -->
     <string name="msg_info_saved">个人信息已保存</string>
     <string name="msg_high_score">最高分 %1$d</string>
-    <string name="pairs_format">已配对 %1$d / %2$d</string>
+    <string name="groups_format">已配对 %1$d / %2$d 组</string>
     <string name="score_format">%1$d</string>
     <string name="empty_value">—</string>
+
+    <!-- 三张牌玩法 -->
+    <string name="mode_three_cards">三张牌配对</string>
+
+    <!-- 菜单与关于对话框 -->
+    <string name="menu_about">关于</string>
+    <string name="about_title">关于</string>
+    <string name="app_version">1.0</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="about_author">作者：%1$s</string>
+    <string name="about_student_id">学号：%1$s</string>
+    <string name="about_description">基于 RecyclerView 的翻牌游戏</string>
+    <string name="about_rule">每凑够三张点数相同（或花色相同）的牌即可配对</string>
+    <string name="action_ok">确定</string>
 
     <!-- 无障碍描述 -->
     <string name="card_desc_hidden">第 %1$d 张牌，未翻开</string>

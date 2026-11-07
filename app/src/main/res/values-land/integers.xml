@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    横屏下的牌桌参数：屏幕变宽后列数从 4 增到 6，牌数相应减为 12 张（6 列 x 2 行），
+    这样每张牌仍有足够的显示面积，不会因为 24 张牌挤在两行而变形。
+-->
+<resources>
+    <integer name="game_card_count">12</integer>
+    <integer name="game_column_count">6</integer>
+</resources>

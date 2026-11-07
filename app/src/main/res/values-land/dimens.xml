@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    横屏时垂直空间紧张，把计分面板、按钮的高度压小一些，把省下的高度留给牌桌，
+    这样横屏的 12 张牌才不会被压成很扁的长条。
+-->
+<resources>
+    <dimen name="text_score">24sp</dimen>
+    <dimen name="game_panel_margin">8dp</dimen>
+    <dimen name="game_panel_padding">8dp</dimen>
+    <dimen name="game_button_height">40dp</dimen>
+    <dimen name="game_controls_padding">8dp</dimen>
+</resources>
