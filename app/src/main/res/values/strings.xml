@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">方晨2024080805</string>
+
+    <!-- 各 Activity 标题 -->
+    <string name="title_person_info">信息修改</string>
+    <string name="title_card_game">翻牌游戏</string>
+
+    <!-- 字段名称 -->
+    <string name="label_avatar">头像</string>
+    <string name="label_name">姓名</string>
+    <string name="label_gender">性别</string>
+    <string name="label_student_id">学号</string>
+    <string name="label_phone">电话</string>
+    <string name="label_email">邮件地址</string>
+    <string name="label_hobby">爱好</string>
+    <string name="label_high_score">游戏最高分</string>
+    <string name="label_score">得分</string>
+
+    <!-- 性别 -->
+    <string name="gender_male">男</string>
+    <string name="gender_female">女</string>
+
+    <!-- 爱好选项 -->
+    <string name="hobby_travel">旅游</string>
+    <string name="hobby_reading">阅读</string>
+    <string name="hobby_game">游戏</string>
+    <string name="hobby_shopping">购物</string>
+    <string name="hobby_separator">、</string>
+
+    <string-array name="hobby_options">
+        <item>@string/hobby_travel</item>
+        <item>@string/hobby_reading</item>
+        <item>@string/hobby_game</item>
+        <item>@string/hobby_shopping</item>
+    </string-array>
+
+    <!-- 按钮与操作 -->
+    <string name="action_edit_info">修改个人信息</string>
+    <string name="action_play_game">翻牌游戏</string>
+    <string name="action_save">保存</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_restart">重新开始</string>
+    <string name="action_exit">退出</string>
+    <string name="action_change_avatar">更换头像</string>
+
+    <!-- 输入提示 -->
+    <string name="hint_name">姓名</string>
+    <string name="hint_student_id">学号</string>
+    <string name="hint_phone">电话号码</string>
+    <string name="hint_email">电子邮件地址</string>
+
+    <!-- 校验提示 -->
+    <string name="error_name_empty">姓名不能为空</string>
+    <string name="error_student_id_empty">学号不能为空</string>
+    <string name="error_phone_invalid">电话号码格式不正确</string>
+    <string name="error_email_invalid">电子邮件地址格式不正确</string>
+
+    <!-- 默认数据 -->
+    <string name="default_name">方晨</string>
+    <string name="default_student_id">2024080805</string>
+    <string name="default_phone">13800138000</string>
+    <string name="default_email">fangchen@sicnu.edu.cn</string>
+
+    <!-- 头像选择 -->
+    <string name="avatar_option_title">请选择头像</string>
+    <string name="avatar_option_blue">蓝色头像</string>
+    <string name="avatar_option_teal">青色头像</string>
+    <string name="avatar_option_orange">橙色头像</string>
+    <string name="avatar_option_purple">紫色头像</string>
+
+    <!-- 提示信息与格式 -->
+    <string name="msg_info_saved">个人信息已保存</string>
+    <string name="msg_high_score">最高分 %1$d</string>
+    <string name="pairs_format">已配对 %1$d / %2$d</string>
+    <string name="score_format">%1$d</string>
+    <string name="empty_value">—</string>
+
+    <!-- 无障碍描述 -->
+    <string name="card_desc_hidden">第 %1$d 张牌，未翻开</string>
+    <string name="card_desc_revealed">第 %1$d 张牌，%2$s</string>
+</resources>

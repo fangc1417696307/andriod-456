@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+.idea/
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# 实验报告文档只在本地保存，不上传到 GitHub
+docs/
+.kotlin/
+.workbuddy/

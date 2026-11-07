@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    单张扑克牌的布局：
+    cardBack  —— 牌的背面（未翻开时显示）
+    cardFront —— 牌的正面（翻开的牌显示点数与花色）
+-->
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <View
+        android:id="@+id/cardBack"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_card_back" />
+
+    <LinearLayout
+        android:id="@+id/cardFront"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/card_rank_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSuit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/card_suit_text" />
+    </LinearLayout>
+</merge>

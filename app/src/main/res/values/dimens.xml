@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spacing_tiny">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_normal">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+
+    <dimen name="corner_large">18dp</dimen>
+    <dimen name="corner_card">10dp</dimen>
+
+    <dimen name="avatar_size">96dp</dimen>
+    <dimen name="avatar_badge">36dp</dimen>
+    <dimen name="avatar_option">56dp</dimen>
+
+    <dimen name="icon_size">20dp</dimen>
+    <dimen name="icon_large">36dp</dimen>
+    <dimen name="label_width">76dp</dimen>
+
+    <dimen name="card_gap">4dp</dimen>
+    <dimen name="card_rank_text">24sp</dimen>
+    <dimen name="card_suit_text">18sp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_elevation_chosen">8dp</dimen>
+    <dimen name="stroke_thin">1dp</dimen>
+    <dimen name="stroke_selected">3dp</dimen>
+
+    <dimen name="text_name">22sp</dimen>
+    <dimen name="text_value">16sp</dimen>
+    <dimen name="text_label">14sp</dimen>
+    <dimen name="text_secondary">13sp</dimen>
+    <dimen name="text_score">34sp</dimen>
+    <dimen name="text_score_large">28sp</dimen>
+</resources>

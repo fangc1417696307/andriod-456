@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 品牌色 -->
+    <color name="brand_primary">#0F766E</color>
+    <color name="brand_primary_dark">#0B5A54</color>
+    <color name="brand_accent">#F2B705</color>
+
+    <!-- 基础色 -->
+    <color name="app_background">#F3F5F7</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="text_primary">#16212B</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="divider">#E6E9EE</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- 扑克牌 -->
+    <color name="suit_red">#D32F2F</color>
+    <color name="suit_black">#1F2430</color>
+    <color name="card_back_start">#1D3A5F</color>
+    <color name="card_back_end">#2C6E91</color>
+    <color name="gold">#F2B705</color>
+
+    <!-- 牌桌 -->
+    <color name="felt_dark">#0B5D3B</color>
+    <color name="felt_light">#127A4E</color>
+    <color name="felt_card">#1FFFFFFF</color>
+    <color name="on_felt">#FFFFFF</color>
+    <color name="on_felt_secondary">#CCFFFFFF</color>
+
+    <!-- 头像 -->
+    <color name="avatar_blue">#1E88E5</color>
+    <color name="avatar_teal">#00897B</color>
+    <color name="avatar_orange">#F4511E</color>
+    <color name="avatar_purple">#6D4C9F</color>
+</resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/spacing_small">
+
+    <ImageView
+        android:id="@+id/avatarOptionBlue"
+        android:layout_width="@dimen/avatar_option"
+        android:layout_height="@dimen/avatar_option"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/avatar_option_blue"
+        android:focusable="true"
+        android:src="@drawable/avatar_blue" />
+
+    <ImageView
+        android:id="@+id/avatarOptionTeal"
+        android:layout_width="@dimen/avatar_option"
+        android:layout_height="@dimen/avatar_option"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/avatar_option_teal"
+        android:focusable="true"
+        android:src="@drawable/avatar_teal" />
+
+    <ImageView
+        android:id="@+id/avatarOptionOrange"
+        android:layout_width="@dimen/avatar_option"
+        android:layout_height="@dimen/avatar_option"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/avatar_option_orange"
+        android:focusable="true"
+        android:src="@drawable/avatar_orange" />
+
+    <ImageView
+        android:id="@+id/avatarOptionPurple"
+        android:layout_width="@dimen/avatar_option"
+        android:layout_height="@dimen/avatar_option"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:contentDescription="@string/avatar_option_purple"
+        android:focusable="true"
+        android:src="@drawable/avatar_purple" />
+</LinearLayout>
