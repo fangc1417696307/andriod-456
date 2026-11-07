@@ -18,7 +18,7 @@ import org.junit.runner.RunWith
 
 /**
  * 主界面的 UI 测试（Espresso）：
- * 校验玩家信息的显示，以及两个二级界面的跳转。
+ * 校验玩家信息的显示、两个二级界面的跳转，以及"关于"菜单弹出的对话框。
  */
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
@@ -62,8 +62,28 @@ class MainActivityTest {
 
         onView(withId(R.id.btnPlayGame)).perform(scrollTo(), click())
 
-        onView(withId(R.id.cardGameView)).check(matches(isDisplayed()))
+        onView(withId(R.id.rvCards)).check(matches(isDisplayed()))
         onView(withId(R.id.tvScore))
             .check(matches(withText(context.getString(R.string.score_format, 0))))
+    }
+
+    @Test
+    fun clickAboutMenu_showsAboutDialog() {
+        ActivityScenario.launch(MainActivity::class.java)
+
+        onView(withText(R.string.menu_about)).perform(click())
+
+        // 对话框里的版本、作者、学号都来自 resources / PlayerStore
+        onView(withId(R.id.tvAboutVersion)).check(
+            matches(withText(context.getString(R.string.about_version, context.getString(R.string.app_version))))
+        )
+        onView(withId(R.id.tvAboutAuthor)).check(
+            matches(withText(context.getString(R.string.about_author, PlayerStore.name)))
+        )
+        onView(withId(R.id.tvAboutStudentId)).check(
+            matches(withText(context.getString(R.string.about_student_id, PlayerStore.studentId)))
+        )
+
+        onView(withText(R.string.action_ok)).perform(click())
     }
 }

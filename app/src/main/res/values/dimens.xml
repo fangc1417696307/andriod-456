@@ -29,5 +29,11 @@
     <dimen name="text_label">14sp</dimen>
     <dimen name="text_secondary">13sp</dimen>
     <dimen name="text_score">34sp</dimen>
+
+    <!-- 翻牌游戏界面的尺寸（横屏的取值见 values-land/dimens.xml） -->
+    <dimen name="game_panel_margin">16dp</dimen>
+    <dimen name="game_panel_padding">18dp</dimen>
+    <dimen name="game_button_height">52dp</dimen>
+    <dimen name="game_controls_padding">16dp</dimen>
     <dimen name="text_score_large">28sp</dimen>
 </resources>

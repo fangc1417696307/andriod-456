@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 关于对话框的内容：应用图标 + 名称 + 版本 + 玩法说明 + 作者信息 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/spacing_large"
+    android:paddingTop="@dimen/spacing_large"
+    android:paddingEnd="@dimen/spacing_large"
+    android:paddingBottom="@dimen/spacing_small">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:contentDescription="@string/about_title"
+        android:src="@mipmap/ic_launcher"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.CardGame.Circle" />
+
+    <TextView
+        android:id="@+id/tvAboutName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:text="@string/app_name"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_name"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvAboutVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/text_secondary" />
+
+    <TextView
+        android:id="@+id/tvAboutDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:gravity="center"
+        android:text="@string/about_description"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_value" />
+
+    <TextView
+        android:id="@+id/tvAboutRule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:gravity="center"
+        android:text="@string/about_rule"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/text_secondary" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/spacing_normal"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:background="@color/divider" />
+
+    <TextView
+        android:id="@+id/tvAboutAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_value" />
+
+    <TextView
+        android:id="@+id/tvAboutStudentId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_tiny"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_value" />
+</LinearLayout>

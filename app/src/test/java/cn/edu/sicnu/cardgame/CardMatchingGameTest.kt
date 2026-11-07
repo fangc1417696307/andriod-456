@@ -5,7 +5,7 @@ import cn.edu.sicnu.cardgame.model.Card
 import cn.edu.sicnu.cardgame.model.CardMatchingGame
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotSame
+import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -13,7 +13,7 @@ import org.junit.Test
  * Model 层 CardMatchingGame 的单元测试。
  *
  * 使用内部构造方法传入固定的牌组，使计分结果完全可预期。
- * 计分规则：选牌 -1，点数相同 +4*4，花色相同 +1*4，不匹配 -2。
+ * 三张牌玩法计分规则：选牌 -1，三张点数全同 +4*4，三张花色全同 +1*4，不匹配 -2。
  */
 class CardMatchingGameTest {
 
@@ -21,15 +21,26 @@ class CardMatchingGameTest {
 
     @Test
     fun newGame_dealsRequestedNumberOfCardsAndStartsFromZero() {
-        val game = CardMatchingGame(16)
-        assertEquals(16, game.cardCount)
+        val game = CardMatchingGame(24)
+
+        assertEquals(24, game.cardCount)
+        assertEquals(8, game.groupCount)
         assertEquals(0, game.score)
-        assertEquals(0, game.matchedPairs)
+        assertEquals(0, game.matchedGroups)
+    }
+
+    @Test
+    fun newGame_dealsCardsThatCanAlwaysBeGroupedByThree() {
+        val game = CardMatchingGame(24)
+
+        val countByRank = game.cards.groupingBy { it.rankName }.eachCount()
+        assertEquals(8, countByRank.size)
+        assertTrue(countByRank.values.all { it == CardMatchingGame.DEFAULT_MATCH_COUNT })
     }
 
     @Test
     fun chooseOneCard_costsOnePointAndTurnsFaceUp() {
-        val game = gameOf(Card("♥", "A"), Card("♠", "K"))
+        val game = gameOf(Card("♥", "A"), Card("♠", "A"), Card("♣", "A"))
 
         game.chooseCardAtIndex(0)
 
@@ -40,7 +51,7 @@ class CardMatchingGameTest {
 
     @Test
     fun chooseSameCardTwice_turnsItBackAndKeepsScore() {
-        val game = gameOf(Card("♥", "A"), Card("♠", "K"))
+        val game = gameOf(Card("♥", "A"), Card("♠", "A"), Card("♣", "A"))
 
         game.chooseCardAtIndex(0)
         game.chooseCardAtIndex(0)
@@ -50,50 +61,54 @@ class CardMatchingGameTest {
     }
 
     @Test
-    fun choosePairWithSameRank_scoresBonusAndMarksBothMatched() {
-        val game = gameOf(Card("♥", "A"), Card("♠", "A"))
+    fun chooseThreeCardsWithSameRank_scoresBonusAndMarksAllMatched() {
+        val game = gameOf(Card("♥", "A"), Card("♠", "A"), Card("♣", "A"))
 
         game.chooseCardAtIndex(0)
         game.chooseCardAtIndex(1)
+        game.chooseCardAtIndex(2)
 
-        // -1（选第一张） + 4 * 4（点数相同） - 1（选第二张）= 14
-        assertEquals(14, game.score)
-        assertTrue(game.cardAtIndex(0).isMatched)
-        assertTrue(game.cardAtIndex(1).isMatched)
-        assertEquals(1, game.matchedPairs)
+        // -1（第一张） -1（第二张） + 4 * 4（三张点数相同） -1（第三张）= 13
+        assertEquals(13, game.score)
+        assertTrue(game.cards.all { it.isMatched })
+        assertEquals(1, game.matchedGroups)
     }
 
     @Test
-    fun choosePairWithSameSuitOnly_scoresSmallBonus() {
-        val game = gameOf(Card("♥", "A"), Card("♥", "K"))
+    fun chooseThreeCardsWithSameSuit_scoresSmallBonus() {
+        val game = gameOf(Card("♥", "A"), Card("♥", "5"), Card("♥", "K"))
 
         game.chooseCardAtIndex(0)
         game.chooseCardAtIndex(1)
+        game.chooseCardAtIndex(2)
 
-        // -1 + 1 * 4 - 1 = 2
-        assertEquals(2, game.score)
-        assertEquals(1, game.matchedPairs)
+        // -1 -1 + 1 * 4 -1 = 1
+        assertEquals(1, game.score)
+        assertEquals(1, game.matchedGroups)
     }
 
     @Test
-    fun chooseMismatchedCards_appliesPenaltyAndTurnsPreviousCardBack() {
-        val game = gameOf(Card("♥", "A"), Card("♠", "K"))
+    fun chooseThreeCardsWithOnlyTwoSameRank_appliesPenaltyAndTurnsOthersBack() {
+        val game = gameOf(Card("♥", "A"), Card("♠", "A"), Card("♣", "7"))
 
         game.chooseCardAtIndex(0)
         game.chooseCardAtIndex(1)
+        game.chooseCardAtIndex(2)
 
-        // -1 - 2（不匹配）- 1 = -4
-        assertEquals(-4, game.score)
+        // -1 -1 - 2（不匹配） -1 = -5
+        assertEquals(-5, game.score)
         assertFalse(game.cardAtIndex(0).isChosen)
-        assertTrue(game.cardAtIndex(1).isChosen)
-        assertEquals(0, game.matchedPairs)
+        assertFalse(game.cardAtIndex(1).isChosen)
+        assertTrue(game.cardAtIndex(2).isChosen)
+        assertEquals(0, game.matchedGroups)
     }
 
     @Test
-    fun matchedCard_cannotBeChosenAgain() {
-        val game = gameOf(Card("♥", "A"), Card("♠", "A"))
+    fun matchedCards_cannotBeChosenAgain() {
+        val game = gameOf(Card("♥", "A"), Card("♠", "A"), Card("♣", "A"))
         game.chooseCardAtIndex(0)
         game.chooseCardAtIndex(1)
+        game.chooseCardAtIndex(2)
         val scoreAfterMatch = game.score
 
         game.chooseCardAtIndex(0)
@@ -103,16 +118,30 @@ class CardMatchingGameTest {
     }
 
     @Test
-    fun restartWithController_startsANewGameWithZeroScore() {
+    fun reset_clearsScoreAndDealsFaceDownCardsAgain() {
+        val game = CardMatchingGame(24)
+        game.chooseCardAtIndex(0)
+        assertEquals(-1, game.score)
+
+        game.reset()
+
+        assertEquals(0, game.score)
+        assertEquals(24, game.cardCount)
+        assertEquals(0, game.matchedGroups)
+        assertTrue(game.cards.none { it.isChosen || it.isMatched })
+    }
+
+    @Test
+    fun restartWithController_resetsTheSameGameModel() {
         val controller = CardGameController()
         controller.selectCard(0)
         assertEquals(-1, controller.model.score)
-        val firstGame = controller.model
+        val game = controller.model
 
         controller.startNewGame()
 
+        assertSame(game, controller.model)
         assertEquals(0, controller.model.score)
-        assertEquals(16, controller.model.cardCount)
-        assertNotSame(firstGame, controller.model)
+        assertEquals(24, controller.model.cardCount)
     }
 }
